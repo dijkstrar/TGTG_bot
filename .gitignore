@@ -6,6 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+# database
+*.db
+configure_db.*
+
+#notebooks
+*.ipynb
+
 # Distribution / packaging
 .Python
 build/
@@ -54,6 +61,8 @@ coverage.xml
 # Translations
 *.mo
 *.pot
+
+.vscode
 
 # Django stuff:
 *.log
