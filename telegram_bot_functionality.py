@@ -29,7 +29,11 @@ dispatcher = updater.dispatcher
 #start 
 def start(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, 
-                            text=f"Welcome {update['effective_chat']['first_name']} to TooGoodToGo Checker 🛍️🤑. Please discover all commands via /!")
+                            text=f"Welcome {update['effective_chat']['first_name']} to TooGoodToGo Checker 🛍️🤑. 👋 I am the TooGoodToGo bot.\
+🚨 I will tell you whenever the stock of your favorites changes. \
+To login into your TooGoodToGo account run: /register email@example.com \
+If you get tired of my spamming you can (temporarily) disable me with: \
+/deregister")
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
@@ -46,7 +50,7 @@ def register(update: Update, context: CallbackContext):
     else:
         email = context.args[0]
         if re.fullmatch(email_regex, email):
-            context.bot.send_message(chat_id=update.effective_chat.id, text=f'Valid email. Please verify login by clicking the link in your mailbox, using computer (not Phone) 📧. Sent a mail to: {email}')
+            context.bot.send_message(chat_id=update.effective_chat.id, text=f"Valid email. Please verify login by clicking the link in your mailbox, using computer (Don't open the email on a phone that has the TooGoodToGo app installed. That won't work.) 📧. Sent a mail to: {email}")
             TGTG_framework.login(update.effective_chat.id, email)
             context.bot.send_message(chat_id=update.effective_chat.id, text=f'Login Succesful 🔑\nStay Tuned for notifications 🔔')
         else:

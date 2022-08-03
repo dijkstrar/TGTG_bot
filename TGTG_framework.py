@@ -80,6 +80,7 @@ def send_message(chat_id, message):
 
 def check_for_user(chat_id):
     offer_dict = request_offers(chat_id)
+    print(chat_id,'length offer_dict:',len(offer_dict.keys()))
     to_send = determine_notifications(offer_dict, chat_id)
     for store_id in to_send:
         message = compose_message(offer_dict, store_id)
@@ -138,15 +139,10 @@ def compose_message(offer_dict,store_id):
     order = offer_dict[store_id]
     return f"""{order['store_name']} (⭐{order['rating']}) NEW OFFER!
 Offer 🛍️: {order['quantity']}X {order['product_name']}
-Price 🤑: ~{"{:.2f}".format(order['price']['old'])}~ {"{:.2f}".format(order['price']['new'])} {order['price']['currency']}
-Pickup 📆:  {extract_date(order['pickup_interval']['start'])} ➡️ ⏰ {extract_time(order['pickup_interval']['start'])} - {extract_time(order['pickup_interval']['end'])}
+Price 🤑: {"{:.2f}".format(order['price']['new'])} {order['price']['currency']}
+Pickup 📆: {extract_date(order['pickup_interval']['start'])} ➡️ ⏰ {extract_time(order['pickup_interval']['start'])} - {extract_time(order['pickup_interval']['end'])}
 [NAVIGATE NOW]({construct_url(order['address'])})
 """
-
-
-
-#ideas:
-# maak een periodieke scraper om te kijken of een client nog actief is. If not active, verwijder entry.
 
 #commands telegrambot
 # login (send email, regex validatie) -> ook eentje voor confirmed (store credentials salted)
