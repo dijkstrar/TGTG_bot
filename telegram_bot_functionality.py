@@ -8,7 +8,7 @@ from telegram.ext import Updater
 from telegram import Update
 from telegram.ext import CallbackContext
 from telegram.ext import MessageHandler, Filters
-
+import traceback
 
 import re
 
@@ -66,6 +66,17 @@ def deregister(update: Update, context: CallbackContext):
         context.bot.send_message(chat_id=update.effective_chat.id, text=f'You were never registered 🤷. Nothing happened.')
 deregister_handler = CommandHandler('deregister', deregister)
 dispatcher.add_handler(deregister_handler)
+
+def check_if_running(update: Update, context: CallbackContext):
+    chat_id = update.effective_chat.id
+    try:
+        TGTG_framework.request_offers(chat_id)
+        context.bot.send_message(chat_id=update.effective_chat.id, text=f'Still running successfully 💯!')
+    except Exception as e:
+        context.bot.send_message(chat_id=update.effective_chat.id, text=f'An error occurred... 😔 \
+         {e}, {traceback.format_exc()}')
+up_handler = CommandHandler('up', check_if_running)
+dispatcher.add_handler(up_handler)
 
 
 
