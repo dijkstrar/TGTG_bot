@@ -69,6 +69,7 @@ dispatcher.add_handler(deregister_handler)
 
 def check_if_running(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
+    #if it exists in the db, make a call. If it doesnt exist, notify!
     try:
         TGTG_framework.request_offers(chat_id)
         context.bot.send_message(chat_id=update.effective_chat.id, text=f'Still running successfully 💯!')
