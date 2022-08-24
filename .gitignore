@@ -8,7 +8,6 @@ __pycache__/
 
 # database
 *.db
-configure_db.*
 
 #notebooks
 *.ipynb
