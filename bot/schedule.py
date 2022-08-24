@@ -1,9 +1,3 @@
-# nu meerdere schedulers maken.
-# TGTG bot moet altijd runnen
-
-# eerste schedulers loopt over de sql db heen, en checkt offers en sends notifications
-# de andere scheduler gaat eens per half uur: kijk of de key nog werkt per user.
-# de andere scheduler eens per uur: kijk of huidige tijd oude tijd exceeded is. 
 import datetime
 from datetime import datetime
 

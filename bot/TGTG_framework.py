@@ -143,9 +143,3 @@ Price 🤑: {"{:.2f}".format(order['price']['new'])} {order['price']['currency']
 Pickup 📆: {extract_date(order['pickup_interval']['start'])} ➡️ ⏰ {extract_time(order['pickup_interval']['start'])} - {extract_time(order['pickup_interval']['end'])}
 [NAVIGATE NOW]({construct_url(order['address'])})
 """
-
-#commands telegrambot
-# login (send email, regex validatie) -> ook eentje voor confirmed (store credentials salted)
-# resend email
-# start_checking
-# stop_checking
