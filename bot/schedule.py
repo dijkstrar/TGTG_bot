@@ -16,7 +16,6 @@ scheduler = BlockingScheduler()
 @scheduler.scheduled_job(IntervalTrigger(seconds=60))
 def search_for_offers():
     active_list = TGTG_framework.get_active_ids()
-    print('SEARCHING', active_list)
     for chat_id in active_list:
         try: 
             TGTG_framework.check_for_user(chat_id)
@@ -33,8 +32,3 @@ def remove_expired_deals():
     
 
 scheduler.start()
-
-# print('SEARCHING')
-# active_list = get_active_ids()
-# for chat_id in active_list:
-#     TGTG_framework.check_for_user(chat_id)
