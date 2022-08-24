@@ -31,14 +31,33 @@ cd TGTG_bot
 
 ```bash
 #create an .env file
-cp env.example .env
+sudo cp env.example .env
 sudo nano .env
 
 #enter your key:
 TELEGRAM_TOKEN=...
 ```
 
-Finally you can compose the docker container
+Finally you can build and run the docker container
 ```bash
 docker-compose up -d
+```
+
+### Troubleshooting RaspberryPi3
+In case you encounter request errors (code 443), the DNS configuration inside your docker container must be altered.
+One way to do this, would be by inspecting docker's DNS configuration
+
+```
+cat /etc/docker/daemon.json
+```
+Change the fields accordingly:
+
+```
+{
+    "dns": ["DNS_1", "DNS_2"]
+}
+```
+Docker restart is required:
+```
+sudo systemctl restart docker
 ```

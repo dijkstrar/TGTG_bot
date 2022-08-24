@@ -1,7 +1,9 @@
-version: "3"
+version: "3.4"
 
 services:
   tgtg:
     container_name: tgtg
-    build: .
     image: tgtg:latest
+    build: 
+      context: "."
+      network: host

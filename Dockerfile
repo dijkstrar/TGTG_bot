@@ -1,11 +1,11 @@
 FROM python:3-alpine
 
-
 WORKDIR tgtg
 COPY requirements.txt ./
-RUN apk add --no-cache gcc musl-dev curl bash && \
-    pip install --no-cache-dir -r requirements.txt
 RUN apk add --no-cache tzdata && cp -r -f /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+
+RUN pip3 install --no-cache-dir -r requirements.txt
+
 COPY . .
 
 RUN ["chmod", "a+x", "bot/docker_entrypoint.sh"]
