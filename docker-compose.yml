@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  tgtg:
+    container_name: tgtg
+    build: .
+    image: tgtg:latest
