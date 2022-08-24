@@ -1,5 +1,5 @@
 requests==2.28.1
 python_telegram_bot==13.13
-APScheduler==3.6.3
+APScheduler
 python-dotenv==0.20.0
 tgtg==0.13.0

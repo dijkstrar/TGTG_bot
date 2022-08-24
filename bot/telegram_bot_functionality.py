@@ -71,11 +71,12 @@ def check_if_running(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     #if it exists in the db, make a call. If it doesnt exist, notify!
     try:
-        TGTG_framework.request_offers(chat_id)
+        check_result = TGTG_framework.request_offers(chat_id)
+        print(check_result,flush=True)
         context.bot.send_message(chat_id=update.effective_chat.id, text=f'Still running successfully 💯!')
     except Exception as e:
-        context.bot.send_message(chat_id=update.effective_chat.id, text=f'An error occurred... 😔 \
-         {e}, {traceback.format_exc()}')
+        context.bot.send_message(chat_id=update.effective_chat.id, text=f"An error occurred... 😔 maybe you're not registered...! 😵 Please register via /register 💪 \
+         {e}, {traceback.format_exc()}")
 up_handler = CommandHandler('up', check_if_running)
 dispatcher.add_handler(up_handler)
 
