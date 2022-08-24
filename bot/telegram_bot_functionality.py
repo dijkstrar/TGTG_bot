@@ -69,7 +69,7 @@ dispatcher.add_handler(deregister_handler)
 
 def check_if_running(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
-    if chat_id not in TGTG_framework.get_active_ids():
+    if str(chat_id) not in TGTG_framework.get_active_ids():
         context.bot.send_message(chat_id=update.effective_chat.id, text=f"An error occurred... 😔 You are NOT registered. Please register via /register 💪 ")
     else:
         try:
